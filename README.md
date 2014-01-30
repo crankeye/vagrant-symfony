@@ -31,3 +31,6 @@ The following packages are also installed:
 - ServerName: local.dev
 - ServerAlias: www.local.dev
 - DocumentRoot: /var/www/project/web
+
+### Private Network
+The vagrant box is configured on a private network at 192.168.56.101 which is accessible from the guest OS. You can connect a GUI MySQL client by using the default port (3306) and a host ip of 192.168.56.101. See the [Vagrant documentation](http://docs.vagrantup.com/v2/networking/private_network.html) for additional information.
