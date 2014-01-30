@@ -1,0 +1,15 @@
+<%# /puppet/modules/apache/templates/000-default.conf.erb %>
+<VirtualHost *:80>
+    ServerName <%= @serverName %>
+    ServerAlias <%= @serverAlias %>
+
+    DocumentRoot <%= @documentRoot %>
+    <Directory <%= @documentRoot %>>
+	    # enable the .htaccess rewrites
+	    AllowOverride All
+	    Require all granted
+	</Directory>
+
+    ErrorLog /var/log/apache2/project_error.log
+    CustomLog /var/log/apache2/project_access.log combined
+</VirtualHost>
