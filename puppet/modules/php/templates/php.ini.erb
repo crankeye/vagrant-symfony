@@ -1820,17 +1820,6 @@ ldap.max_links = -1
 ; tab-width: 4
 ; End:
 
-<% if @use_xdebug != "0" %>
-zend_extension = xdebug.so
-[xdebug]
-xdebug.default_enable = 1
-xdebug.remote_enable=1
-xdebug.remote_autostart=1
-xdebug.remote_connect_back=1
-xdebug.max_nesting_level = 250
-xdebug.idekey = "PHPSTORM"
-<% end %>
-
 [opcache]
 opcache.enable = 1
 

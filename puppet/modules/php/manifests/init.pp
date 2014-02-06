@@ -42,4 +42,14 @@ class php
             require => [Package['php5']],
     }
 
+    file
+    {
+        "/etc/php5/apache2/conf.d/20-xdebug.ini":
+            ensure  => present,
+            owner   => root, group => root,
+            notify  => Service['apache2'],
+            content => template('php/20-xdebug.ini.erb'),
+            require => [Package['php5']],
+    }
+
 }
