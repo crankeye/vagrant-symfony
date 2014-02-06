@@ -7,7 +7,7 @@ Vagrant.configure("2") do |config|
         dev_config.vm.network :private_network, ip: "192.168.56.101"
         
         dev_config.vm.hostname = "development"
-        dev_config.vm.synced_folder "./", "/var/www", {:mount_options => ['dmode=777','fmode=777']}
+        dev_config.vm.synced_folder "./", "/var/www", {:mount_options => ['dmode=777','fmode=777'], :owner => "www-data", :group => "www-data"}
         dev_config.vm.provision :shell, :inline => "echo \"America/Phoenix\" | sudo tee /etc/timezone && dpkg-reconfigure --frontend noninteractive tzdata"
 
         dev_config.vm.provider :virtualbox do |v|
