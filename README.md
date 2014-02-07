@@ -22,6 +22,27 @@ The following packages are also installed:
 5. Modify `/var/www/project/web/app_dev.php` and add `192.168.56.1` to the local ip security array or comment out the section entirely.
 6. You should now be able to see http://local.dev/app_dev.php/ in your browser.
 
+### Running Symfony2 commands via command line
+The avoid permissions issues when running commands with Symfony2 execute them as www-data. For example to clear your cache use: 
+
+`sudo -u www-data php /var/www/project/app/console cache:clear`
+
+
+### Increasing Speed with Windows Hosts
+To speed up the environment we've moved the cache to the /tmp/ folder within the guest machine by adding these two functions in the AppKernel.php to the AppKernel class:
+
+```php
+public function getCacheDir()
+{
+    return '/tmp/symfony/cache/'. $this->environment;
+}
+
+public function getLogDir()
+{
+    return '/tmp/symfony/log/'. $this->environment;
+}
+```
+
 ### Default MySQL Password
 - Username: root
 - Passwrod: root
@@ -32,5 +53,5 @@ The following packages are also installed:
 - ServerAlias: www.local.dev
 - DocumentRoot: /var/www/project/web
 
-### Private Network
-The vagrant box is configured on a private network at 192.168.56.101 which is accessible from the guest OS. You can connect a GUI MySQL client by using the default port (3306) and a host ip of 192.168.56.101. See the [Vagrant documentation](http://docs.vagrantup.com/v2/networking/private_network.html) for additional information.
+### A Note About the Private Network
+This vagrant box is configured on a private network at 192.168.56.101 which is accessible from the guest OS. You can connect a GUI MySQL client by using the default port (3306) and a host ip of 192.168.56.101. See the [Vagrant documentation](http://docs.vagrantup.com/v2/networking/private_network.html) for additional information.
