@@ -17,7 +17,8 @@ The following packages are also installed:
 ### Installation
 1. Clone this repo `git clone https://github.com/crankeye/vagrant-symfony.git`
   1. If your host OS is Windows run, as admiistrator, the "run-as-admin-after-clone-windows_symlink_fix.bat" in the root directory.
-2. Run `vagrant up` in the newly created directory.
+2. Run `vagrant up` in the newly created directory. 
+  1. If your host OS is windows you must run the command from an administrator command prompt.
 3. Add `192.168.56.101 local.dev` to your HOSTS file.
 4. SSH into the box and run `composer create-project symfony/framework-standard-edition /var/www/project/ 2.4.1`
 5. Modify `/var/www/project/web/app_dev.php` and add `192.168.56.1` to the local ip security array or comment out the section entirely.
