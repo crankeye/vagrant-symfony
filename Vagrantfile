@@ -13,7 +13,7 @@ Vagrant.configure("2") do |config|
         dev_config.vm.provider :virtualbox do |v|
             v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
             v.customize ["modifyvm", :id, "--memory", "2048"]
-            v.customize ["setextradata", :id, "--VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root", "1"]
+            v.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/vagrant", "1"]
             v.customize ["modifyvm", :id, "--ioapic", "on"]
         end
 
