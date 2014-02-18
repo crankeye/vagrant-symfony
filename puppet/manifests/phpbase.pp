@@ -12,21 +12,27 @@ exec
 { 
     'apt-get update':
         command => '/usr/bin/apt-get update',
-        require => Exec['add php55 apt-repo']
+        require => Class['apt']
+}
+
+class { 'apt':
+    repos => ['ppa:ondrej/php5']
 }
 
 include bootstrap
 include curl
-include php55 #specific setup steps for 5.5
 include php
+
 class { 'apache':
     serverName 		=> "local.dev",
     serverAlias 	=> "www.local.dev",
     documentRoot 	=> "/var/www/project/web"
 }
+
 class { 'mysql':
     database 		=> "development",
     mysqlPassword 	=> "root"
 }
+
 include composer
 include phpunit
