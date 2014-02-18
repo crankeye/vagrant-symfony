@@ -17,9 +17,11 @@ Vagrant.configure("2") do |config|
             v.customize ["modifyvm", :id, "--ioapic", "on"]
         end
 
+        puppet_manifest = ENV['MANIFEST'] == nil ? "phpbase.pp" : ENV['MANIFEST']
+
         dev_config.vm.provision :puppet do |puppet|
             puppet.manifests_path = "puppet/manifests"
-            puppet.manifest_file  = "phpbase.pp"
+            puppet.manifest_file  = puppet_manifest
             puppet.module_path = "puppet/modules"
             #puppet.options = "--verbose --debug"
         end
