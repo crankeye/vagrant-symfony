@@ -44,7 +44,7 @@ class php
 
     file
     {
-        "/etc/php5/apache2/conf.d/20-xdebug.ini":
+        "/etc/php5/mods-available/xdebug.ini":
             ensure  => present,
             owner   => root, group => root,
             notify  => Service['apache2'],
