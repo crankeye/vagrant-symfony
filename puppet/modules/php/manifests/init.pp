@@ -49,7 +49,7 @@ class php
             owner   => root, group => root,
             notify  => Service['apache2'],
             content => template('php/20-xdebug.ini.erb'),
-            require => [Package['php5']],
+            require => [Package['php5'], Package['php5-xdebug']],
     }
 
 }
