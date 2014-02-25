@@ -39,4 +39,13 @@ class apache(
             content => template('apache/000-default.conf.erb'),
             require => Package['apache2'],
     }
+    
+    file 
+    { 
+        "/etc/apache2/sites-enabled/000-default":
+            ensure  => link,
+            target  => "/etc/apache2/sites-available/000-default.conf",
+            owner => root, group => root,
+            require => Package['apache2'],
+    }
 }
