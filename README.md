@@ -1,6 +1,6 @@
 # Symfony Vagrant Box
 
-A basic Ubuntu 12.04, PHP 5.5, and MySQL 5.5 Vagrant setup for Symfony or any other PHP based framework. The puppet modules were based on the [laravel4-vagrant](https://github.com/bryannielsen/Laravel4-Vagrant) setup. A basic working knowledge of Vagrant is needed for setup as this README is quite sparse.
+A basic Ubuntu 12.04, PHP 5.5, MySQL 5.5, and Apache 2.4 Vagrant and puppet configuration for Symfony or any other PHP based framework. The puppet modules were based on the [laravel4-vagrant](https://github.com/bryannielsen/Laravel4-Vagrant) setup. A basic working knowledge of Vagrant is needed for setup as this README is quite sparse.
 
 ### Additional Packages
 The following packages are also installed:
