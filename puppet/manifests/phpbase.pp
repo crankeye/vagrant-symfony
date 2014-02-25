@@ -15,6 +15,8 @@ exec
         require => Class['apt']
 }
 
+#use 'ppa:ondrej/php5-oldstable' for php 5.4
+#use 'ppa:ondrej/php5' for php 5.5
 class { 'apt':
     repos => ['ppa:ondrej/php5']
 }
