@@ -1,6 +1,8 @@
 class mysql(
     $mysqlPassword = "root",
-    $database = "development"
+    $database = "development",
+    $user = '',
+    $userPassword = ''
 )
 {
     package 
@@ -39,8 +41,16 @@ class mysql(
     exec 
     { 
         "grant-default-db":
-            command => "/usr/bin/mysql -uroot -p$mysqlPassword -e 'grant all on `$database`.* to `root@localhost`;'",
+            command => "/usr/bin/mysql -uroot -p$mysqlPassword -e 'grant all on `$database`.* to \"root\"@\"localhost\";'",
             require => [Service["mysql"], Exec["create-default-db"]]
     }
-    
+
+    if ($user != '') {
+        exec 
+        { 
+            "grant-user-db":
+                command => "/usr/bin/mysql -uroot -p$mysqlPassword -e 'grant all on `$database`.* to \"$user\"@\"localhost\" identified by \"$userPassword\";'",
+                require => [Service["mysql"], Exec["create-default-db"]]
+        }
+    }
 }
