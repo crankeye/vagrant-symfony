@@ -1,7 +1,5 @@
 class php(
     $packages = [
-        "php5",
-        "php5-cli",
         "php5-mysql",
         "php5-dev",
         "php5-mcrypt",
@@ -13,12 +11,30 @@ class php(
     ]
 )
 {
+    package
+    {
+      "php5":
+      ensure  => present,
+      require => Exec['apt-get update']
+    }
+
+    #When using the php 5.4 repos:
+    #either php5-cli or php5-cgi must be installed first before installing
+    #php5-mcrypt, php5-mysql, php5-gd, or any other packages which depends
+    #on phpapi-20090626. Otherwise libapache2-mod-php5 will be installed which
+    #will then install apache 2.2.
+    package
+    {
+      "php5-cli":
+      ensure  => present,
+      require => [Exec['apt-get update'], Package['php5']]
+    }
 
     package
     {
         $packages:
             ensure  => latest,
-            require => [Exec['apt-get update'], Package['python-software-properties']]
+            require => [Exec['apt-get update'], Package['python-software-properties'], Package['php5-cli']]
     }
 
     file
@@ -27,7 +43,6 @@ class php(
             ensure  => present,
             owner   => root, group => root,
             notify  => Service['apache2'],
-            #source => "/vagrant/puppet/templates/php.ini",
             content => template('php/php.ini.erb'),
             require => [Package['php5'], Package['apache2']],
     }
