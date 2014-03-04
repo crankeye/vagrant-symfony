@@ -1,6 +1,4 @@
-class php
-{
-
+class php(
     $packages = [
         "php5",
         "php5-cli",
@@ -13,6 +11,8 @@ class php
         "php5-xdebug",
         "libapache2-mod-php5"
     ]
+)
+{
 
     package
     {

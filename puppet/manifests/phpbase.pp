@@ -23,7 +23,21 @@ class { 'apt':
 
 include bootstrap
 include curl
-include php
+
+class { 'php':
+    packages => [
+            "php5",
+            "php5-cli",
+            "php5-mysql",
+            "php5-dev",
+            "php5-mcrypt",
+            "php5-gd",
+            "php5-intl",
+            "php5-curl",
+            "php5-xdebug",
+            "libapache2-mod-php5"
+    ]
+}
 
 class { 'apache':
     serverName 		=> "local.dev",
