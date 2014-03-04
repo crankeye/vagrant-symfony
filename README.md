@@ -16,7 +16,6 @@ The following packages are also installed:
 
 ### Installation
 1. Clone this repo `git clone https://github.com/crankeye/vagrant-symfony.git`
-  1. If your host OS is Windows run, as admiistrator, the "run-as-admin-after-clone-windows_symlink_fix.bat" in the root directory.
 2. Run `vagrant up` in the newly created directory. 
   1. If your host OS is windows you must run the command from an administrator command prompt.
 3. Add `192.168.56.101 local.dev` to your HOSTS file.
@@ -47,7 +46,7 @@ public function getLogDir()
 
 ### Default MySQL Password
 - Username: root
-- Passwrod: root
+- Password: root
 - Database: development
 
 ### Default Apache Virtual Host
