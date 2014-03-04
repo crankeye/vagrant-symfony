@@ -15,10 +15,10 @@ exec
         require => Class['apt']
 }
 
-#use 'ppa:ondrej/php5-oldstable' for php 5.4
-#use 'ppa:ondrej/php5' for php 5.5
+#use 'ppa:ondrej/php5' for php 5.5.x or 'ppa:ondrej/php5-oldstable' for php 5.4.x
+#remove 'ppa:ondrej/apache2' for apache 2.2
 class { 'apt':
-    repos => ['ppa:ondrej/php5']
+    repos => ['ppa:ondrej/php5','ppa:ondrej/apache2']
 }
 
 include bootstrap
