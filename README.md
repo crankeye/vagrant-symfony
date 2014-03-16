@@ -19,7 +19,7 @@ The following packages are also installed:
 2. Run `vagrant up` in the newly created directory. 
   1. If your host OS is windows you must run the command from an administrator command prompt.
 3. Add `192.168.56.101 local.dev` to your HOSTS file.
-4. SSH into the box and run `composer create-project symfony/framework-standard-edition /var/www/project/ 2.4.2`
+4. SSH into the box and run `sudo composer create-project symfony/framework-standard-edition /var/www/project/ 2.4.2`
 5. Modify `/var/www/project/web/app_dev.php` and add `192.168.56.1` to the local ip security array or comment out the section entirely.
 6. You should now be able to see http://local.dev/app_dev.php/ in your browser.
 
