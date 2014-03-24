@@ -63,7 +63,7 @@ class php(
             ensure  => present,
             owner   => root, group => root,
             notify  => Service['apache2'],
-            content => template('php/20-xdebug.ini.erb'),
+            content => template('php/xdebug.ini.erb'),
             require => [Package['php5'], Package['php5-xdebug']],
     }
 
