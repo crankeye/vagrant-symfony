@@ -15,7 +15,7 @@ class php(
     {
       "php5":
       ensure  => present,
-      require => Exec['apt-get update']
+      require => [Exec['apt-get update'], Class['apt']]
     }
 
     #When using the php 5.4 repos:

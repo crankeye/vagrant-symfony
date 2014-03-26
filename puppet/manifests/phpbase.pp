@@ -11,15 +11,16 @@ Exec
 exec 
 { 
     'apt-get update':
-        command => '/usr/bin/apt-get update',
-        require => Class['apt']
+        command => '/usr/bin/apt-get update'
 }
 
+include apt
+
 #use 'ppa:ondrej/php5' for php 5.5.x or 'ppa:ondrej/php5-oldstable' for php 5.4.x
+apt::ppa { 'ppa:ondrej/php5': }
+
 #remove 'ppa:ondrej/apache2' for apache 2.2
-class { 'apt':
-    repos => ['ppa:ondrej/php5','ppa:ondrej/apache2']
-}
+apt::ppa { 'ppa:ondrej/apache2': }
 
 include bootstrap
 include curl
