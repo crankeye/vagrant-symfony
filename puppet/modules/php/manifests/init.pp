@@ -34,7 +34,7 @@ class php(
     {
         $packages:
             ensure  => latest,
-            require => [Exec['apt-get update'], Package['python-software-properties'], Package['php5-cli']]
+            require => [Exec['apt-get update'], Package['php5-cli']]
     }
 
     file
