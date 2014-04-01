@@ -39,9 +39,16 @@ class { 'php':
 }
 
 class { 'apache':
+	apacheRunUser	=> "www-data",
+	apacheRunGroup	=> "www-data"
+}
+
+apache::module { 'rewrite.load': }
+
+apache::vhost { 'local.dev':
     serverName 		=> "local.dev",
     serverAlias 	=> "www.local.dev",
-    documentRoot 	=> "/var/www/project/web"
+    documentRoot 	=> "/var/www/project/web",
 }
 
 class { 'mysql':
