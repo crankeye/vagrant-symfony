@@ -49,6 +49,14 @@ apache::vhost { 'local.dev':
     serverName 		=> "local.dev",
     serverAlias 	=> "www.local.dev",
     documentRoot 	=> "/var/www/project/web",
+	envVars			=> [
+		'ErrorLog /var/log/apache2/project_error.log',
+		'CustomLog /var/log/apache2/project_access.log combined'
+	],
+	directoryVars 	=> [
+		'AllowOverride All',
+	    'Require all granted'
+	]
 }
 
 class { 'mysql':
