@@ -24,7 +24,7 @@ define apache::vhost(
     
     file 
     { 
-        "/etc/apache2/sites-enabled/$serverName":
+        "/etc/apache2/sites-enabled/$serverName.conf":
             ensure  => link,
             target  => "/etc/apache2/sites-available/$serverName.conf",
             owner => root, group => root,
