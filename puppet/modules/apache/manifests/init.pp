@@ -18,6 +18,13 @@ class apache(
             require     => Package['apache2']
     }
 	
+	file
+	{
+		"/etc/apache2/sites-enabled/000-default.conf":
+			ensure		=>  absent,
+			notify  => Service['apache2'],
+	}
+	
 	exec
 	{
 		"change-apache-run-user":
