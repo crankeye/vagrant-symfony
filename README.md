@@ -10,8 +10,8 @@ The following packages are also installed:
 - composer
 
 ### Requirements
-1. [VirtualBox](https://www.virtualbox.org/)
-2. [Vagrant](http://www.vagrantup.com/)
+1. [VirtualBox](https://www.virtualbox.org/) 4.3.10 >=
+2. [Vagrant](http://www.vagrantup.com/) 1.5.3 >=
 3. [Git](http://git-scm.com/)
 
 ### Installation
@@ -23,14 +23,22 @@ The following packages are also installed:
 5. Modify `/var/www/project/web/app_dev.php` and add `192.168.56.1` to the local ip security array or comment out the section entirely.
 6. You should now be able to see http://local.dev/app_dev.php/ in your browser.
 
-### Running Symfony2 commands via command line
-The avoid permissions issues when running commands with Symfony2 execute them as www-data. For example to clear your cache use: 
-
-`sudo -u www-data php /var/www/project/app/console cache:clear`
-
-
 ### Increasing Speed with Windows Hosts
-To speed up the environment we've moved the cache to the /tmp/ folder within the guest machine by adding these two functions in the AppKernel.php to the AppKernel class:
+Currently using rsync on Windows hosts is the best way to overcome the slow Virtual Box synced folders. You can either use `vagrant rsync-auto` to automatically push changes your changes to your box or your can utilize your IDE's deployment tools to automatically upload your changes. 
+
+I've found PHPStorm works well once you've configured the deployment settings correctly. The only minor annoyance is the need to do a `vagrant rsync` after switching branches.
+**Tip:** Clicking the "Remote Host" button will keep your SSH connection alive and greatly improve the transfer time.
+
+To setup rsync on a Windows host you'll need to install using cygwin:
+
+1. Download and install [cygwin](http://www.cygwin.com/). 
+2. Add the rsync package and the openssl package.
+3. Add the cygwin bin directory (C:\cygwin64\bin) to your local path variable.
+4. Comment out the default synced folder in the Vagrant file and uncomment the rsync lines.
+
+Your next `vagrant up` will autmatically rsync your project directory to /var/www/project.
+
+If you still want to use the native Virtual box synced folders you can move the cache to the /tmp/ folder within the guest machine by adding these two functions in the AppKernel.php to the AppKernel class:
 
 ```php
 public function getCacheDir()
