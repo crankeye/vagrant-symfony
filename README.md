@@ -38,6 +38,7 @@ To setup rsync on a Windows host you'll need to install using cygwin:
 
 Your next `vagrant up` will autmatically rsync your project directory to /var/www/project.
 
+#### Increasing Speed on Windows Hosts using Virtual Box Default Synced Folders
 If you still want to use the native Virtual box synced folders you can move the cache to the /tmp/ folder within the guest machine by adding these two functions in the AppKernel.php to the AppKernel class:
 
 ```php
