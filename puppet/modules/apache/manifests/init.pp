@@ -24,6 +24,13 @@ class apache(
 			ensure		=>  absent,
 			notify  => Service['apache2'],
 	}
+
+	file
+	{
+		"/etc/apache2/sites-enabled/000-default":
+			ensure		=>  absent,
+			notify  => Service['apache2'],
+	}
 	
 	exec
 	{
@@ -41,5 +48,14 @@ class apache(
 			notify  => Service['apache2'],
 			require => Package['apache2'],
 			unless  => "cat /etc/apache2/envvars | grep 'export APACHE_RUN_GROUP=$apacheRunGroup'"
+	}
+
+	exec
+	{
+		"change-apache-lock-group":
+			command => "sed -i '/export APACHE_LOCK_DIR=/c\\export APACHE_LOCK_DIR=/var/lock/$apacheRunGroup' /etc/apache2/envvars",
+			notify  => Service['apache2'],
+			require => Package['apache2'],
+			unless  => "cat /etc/apache2/envvars | grep 'export APACHE_LOCK_DIR=/var/lock/$apacheRunGroup'"
 	}
 }
