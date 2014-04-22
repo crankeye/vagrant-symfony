@@ -8,6 +8,11 @@ Exec
   path => ["/usr/bin", "/bin", "/usr/sbin", "/sbin", "/usr/local/bin", "/usr/local/sbin"]
 }
 
+exec 
+{ 
+    'apt-get update':
+        command => '/usr/bin/apt-get update'
+}
 
 include apt
 
@@ -16,13 +21,6 @@ apt::ppa { 'ppa:ondrej/php5': }
 
 #remove 'ppa:ondrej/apache2' for apache 2.2
 apt::ppa { 'ppa:ondrej/apache2': }
-
-exec 
-{ 
-    'apt-get update':
-        command => '/usr/bin/apt-get update',
-		require	=> Class['apt']
-}
 
 include bootstrap
 include curl
