@@ -16,7 +16,7 @@ class php::mongo()
 	
 	file { '/etc/php5/apache2/conf.d/20-mongo.ini':
       ensure => link,
-      target => '../../mods-available/mongo.ini',
+      target => '/etc/php5/mods-available/mongo.ini',
 	  require => [Exec["install-mongo-extension"]]
     }
 }
