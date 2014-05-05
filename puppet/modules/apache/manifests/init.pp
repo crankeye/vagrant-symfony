@@ -22,6 +22,7 @@ class apache(
 	{
 		"/etc/apache2/sites-enabled/000-default.conf":
 			ensure		=>  absent,
+            require     => Package['apache2'],
 			notify  => Service['apache2'],
 	}
 
@@ -29,6 +30,7 @@ class apache(
 	{
 		"/etc/apache2/sites-enabled/000-default":
 			ensure		=>  absent,
+            require     => Package['apache2'],
 			notify  => Service['apache2'],
 	}
 	
