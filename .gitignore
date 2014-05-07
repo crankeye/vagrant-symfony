@@ -1,2 +1,5 @@
 .idea/
 .vagrant/
+environment/
+database/
+hosts.txt
