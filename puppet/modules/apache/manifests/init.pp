@@ -7,7 +7,7 @@ class apache(
     { 
         "apache2":
             ensure  => present,
-            require => [Exec['apt-get update']]
+            require => [Exec['apt-get update'], Class['apt']]
     }
     
     service 

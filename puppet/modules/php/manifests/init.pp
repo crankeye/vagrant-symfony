@@ -27,7 +27,7 @@ class php(
     {
       "php5-cli":
       ensure  => present,
-      require => [Exec['apt-get update'], Package['php5']]
+      require => [Exec['apt-get update'], Package['php5'], Class['apt']]
     }
 
     package
