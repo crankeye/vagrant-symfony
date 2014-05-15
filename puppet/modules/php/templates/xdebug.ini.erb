@@ -1,4 +1,4 @@
-<% if @use_xdebug == "0" %>;<% end %>zend_extension = xdebug.so
+<% if @use_xdebug == "0" %>;<% end %>zend_extension = <%= `php -r "echo ini_get(\'extension_dir\');"` %>/xdebug.so
 [xdebug]
 xdebug.default_enable=1
 xdebug.remote_enable=1
