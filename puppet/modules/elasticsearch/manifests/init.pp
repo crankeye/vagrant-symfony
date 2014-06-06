@@ -1,6 +1,6 @@
 class elasticsearch (
-    $deb_url  = "https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.1.0.deb",
-    $deb_name = "elasticsearch-1.1.0.deb"
+    $deb_url  = "https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.2.0.deb",
+    $deb_name = "elasticsearch-1.2.0.deb"
 )
 {
     package
