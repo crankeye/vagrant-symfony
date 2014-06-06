@@ -1,6 +1,10 @@
 # Enable XDebug ("0" | "1")
 # See the /puppet/modules/php/php.ini.erb for xdebug configuration.
-$use_xdebug = "0"
+$xdebug_enable = "0"
+# Make sure the extension directory is set when using php 5.4 e.g.
+# $xdebug_extension_dir = "/usr/lib/php5/20100525/"
+# You can leave it blank when using php 5.5
+$xdebug_extension_dir = ""
 
 # Default path
 Exec 
